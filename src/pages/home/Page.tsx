@@ -1,13 +1,17 @@
 import { FC, useEffect, useState } from "react";
 import axios from "axios";
 
+import { Filter, Sort } from "@/components/pages/home";
 import { ItemCard } from "@/components/common/card";
 import { useShoppingContext } from "@/context";
+import { sortToHigh, sortToLow } from "@/lib";
 import { FAKE_API, SERVER_ERROR } from "@/constants";
 import { Titem, Tstate } from "@/types";
 
 const Page: FC = () => {
   const [state, setState] = useState<Tstate>({
+    category: [],
+    sort: null,
     items: [],
   });
   const [loading, setLoading] = useState(false);
@@ -36,9 +40,29 @@ const Page: FC = () => {
     return;
   }, []);
 
+  useEffect(() => {
+    let filtered: Titem[] = [];
+
+    state.category.map((el) => {
+      const res = data.filter((item) => item.category === el);
+      filtered.push(...res);
+    });
+
+    if (!filtered.length && state.items.length) {
+      if (state.sort === "high") {
+        return setState({ ...state, items: sortToHigh(data) });
+      }
+      return setState({ ...state, items: sortToLow(data) });
+    }
+
+    setState({ ...state, items: filtered });
+  }, [state.category]);
+
   return (
     <main className="main flex w-full flex-row">
+      <Filter data={data} state={state} setState={setState} />
       <section className="section">
+        <Sort state={state} setState={setState} />
         <ul className="inner-section [@media(width<1280px)]:[&>li:not(:nth-child(n+3))]:mb-[var(--md)] [@media(width<768px)]:[&>li:nth-last-of-type(2)]:mb-[var(--md)]">
           {state.items.length &&
             state.items.map((el) => <ItemCard key={el.id} {...el} />)}
