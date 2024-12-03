@@ -23,6 +23,21 @@ export type Titem = {
   };
 };
 
+export type Tsort = { value: "low" | "high" };
+
+export type Tcategory = {
+  category: Titem["category"];
+  onClick: ({ category }: Pick<Tcategory, "category">) => void;
+};
+
+export type Tfilter = {
+  data: Titem[];
+  state: Tstate;
+  setState: (state: Tstate) => void;
+};
+
 export type Tstate = {
+  category: string[];
+  sort: Tsort["value"] | null;
   items: Titem[];
 };
