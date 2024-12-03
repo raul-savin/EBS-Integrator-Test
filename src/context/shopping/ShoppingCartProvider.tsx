@@ -17,9 +17,41 @@ const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
     setData([...addQuantityToData]);
   };
 
-  const addItemToCart = ({ id }: Pick<Titem, "id">) => {};
+  const addItemToCart = ({ id }: Pick<Titem, "id">) => {
+    const item = data.filter((el) => el.id === id)[0];
 
-  const removeItemFromCart = ({ id }: Pick<Titem, "id">) => {};
+    const itemExists = cart.filter((el) => el.id === id)[0];
+    if (itemExists) {
+      const updateCart = cart.map((el) => {
+        if (el.id === id) {
+          return { ...item, quantity: el.quantity + 1 };
+        }
+        return el;
+      });
+
+      return setCart(updateCart);
+    }
+
+    return setCart([...cart, { ...item, quantity: 1 }]);
+  };
+
+  const removeItemFromCart = ({ id }: Pick<Titem, "id">) => {
+    const item = cart.filter((el) => el.id === id)[0];
+
+    if (item.quantity > 1) {
+      const updateItem = cart.map((el) => {
+        if (el.id === id) {
+          return { ...item, quantity: el.quantity - 1 };
+        }
+        return el;
+      });
+
+      return setCart(updateItem);
+    }
+
+    const removeItemFromCart = cart.filter((item) => item.id !== id);
+    return setCart(removeItemFromCart);
+  };
 
   const clearCart = () => setCart([]);
 
