@@ -1,13 +1,28 @@
-function App() {
-  return (
-    <div style={{ textAlign: "center" }}>
-      <h1>Welcome to the Front-End Developer Test!</h1>
-      <p>
-        We wish you the best of luck. Please make sure to read the README file
-        for instructions.
-      </p>
-    </div>
-  );
-}
+import { FC, lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import { Layout } from "./components/layout";
+import { Four0Four, Home } from "./pages";
+import { LoadingCart } from "./components/common/pages";
+
+const Cart = lazy(() => import("./pages/cart/Page"));
+
+import "./style/tailwind.css";
+import "./style/loaders.css";
+import "./style/index.css";
+
+const App: FC = () => (
+  <Routes>
+    <Route path="/" element={<Layout />}>
+      <Route index element={<Home />} />
+      <Route
+        path="cart"
+        element={<Suspense fallback={<LoadingCart />} children={<Cart />} />}
+      />
+
+      <Route path="*" element={<Four0Four />} />
+    </Route>
+  </Routes>
+);
 
 export default App;
