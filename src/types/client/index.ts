@@ -22,3 +22,7 @@ export type Titem = {
     count: number;
   };
 };
+
+export type Tstate = {
+  items: Titem[];
+};
