@@ -22,7 +22,7 @@ const Filter: FC<Tfilter> = ({ data, state, setState }) => {
         Category
       </h2>
       <ul className="inner-section lg:w-fit">
-        {categories.map((el, index) => (
+        {categories.sort().map((el, index) => (
           <Category key={index} category={el} onClick={toFilter} />
         ))}
       </ul>
