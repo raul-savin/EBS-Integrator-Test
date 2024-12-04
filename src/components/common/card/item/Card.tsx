@@ -1,5 +1,6 @@
 import { FC } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import cn from "classnames";
 
 import Button from "./components/Button";
 
@@ -9,14 +10,25 @@ import { Titem } from "@/types";
 
 const Card: FC<Titem> = ({ id, image, title, price, category }) => {
   const { cart, addItemToCart, removeItemFromCart } = useShoppingContext();
-  const disableButtonIfNoQuantity = cart.map((item) => item.quantity)[0];
+  const itemQuantity = cart.filter((item) => item.id === id)[0]?.quantity;
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   return (
-    <li className="four-column element-padding-tb">
-      <article className="flex flex-col justify-center items-center shadow-md [@media(width<1280px)]:p-[var(--sm)] element-padding-lr  element-padding-tb text-sm md:text-base !pt-0">
+    <li className="four-column element-margin-tb relative">
+      <article
+        className={cn(
+          "flex flex-col justify-center items-center shadow-md [@media(width<1280px)]:p-[var(--sm)] element-padding-lr  element-padding-tb text-sm md:text-base !pt-0",
+          { "shadow-blue-light/50": itemQuantity && pathname !== "/cart" }
+        )}
+      >
+        {pathname === "/cart" && (
+          <span className="absolute right-0 top-0 size-[30px] border-blue flex justify-center items-center rounded-sm border-[1.5px]">
+            {itemQuantity}
+          </span>
+        )}
         <figure>
-          <figcaption className="flex justify-center element-padding-tb !pt-0 capitalize md:text-xs">
+          <figcaption className="flex relative justify-center element-padding-tb capitalize md:text-xs">
             {category}
           </figcaption>
           <img
@@ -27,12 +39,12 @@ const Card: FC<Titem> = ({ id, image, title, price, category }) => {
           />
         </figure>
         <header className="element-padding-tb text-center">
-          <h3>{title}</h3>
+          <h2 className="text-sm">{title}</h2>
         </header>
         <footer className="flex justify-between w-full h-[40px]">
           <Button
             onClick={() => removeItemFromCart({ id })}
-            disabled={!disableButtonIfNoQuantity}
+            disabled={!itemQuantity}
             label="remove product from cart"
           >
             <Remove />
