@@ -23,7 +23,7 @@ const Card: FC<Titem> = ({ id, image, title, price, category }) => {
         )}
       >
         {pathname === "/cart" && (
-          <span className="absolute right-0 top-0 size-[30px] border-blue flex justify-center items-center rounded-sm border-[1.5px]">
+          <span className="absolute right-0 top-0 size-[24px] border-blue flex justify-center items-center rounded-sm border-[1.5px] text-xs">
             {itemQuantity}
           </span>
         )}
