@@ -1,6 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import axios from "axios";
 
+import { ErrorPage, LoadingPage } from "@/components/common/pages";
 import { Filter, ShoppingBag, Sort } from "@/components/pages/home";
 import { ItemCard } from "@/components/common/card";
 import { Title } from "@/components/common/typography";
@@ -17,10 +18,11 @@ const Page: FC = () => {
     items: [],
   });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string>("");
 
   const { cart, data, updateData } = useShoppingContext();
 
+  console.log(error);
   // Fetch and Update state and Context state from API
   useEffect(() => {
     const fetchData = async () => {
@@ -73,6 +75,9 @@ const Page: FC = () => {
     // If Sort IS selected return all items sorted to Low
     return setState({ ...state, items: sortToLow(data) });
   }, [state.category]);
+
+  if (loading) return <LoadingPage />;
+  if (!isEmpty(error)) return <ErrorPage text={error} />;
 
   return (
     <main className="main">

@@ -1,1 +1,2 @@
-export { default as LoadingCart } from "./loading/cart/Page";
+export { default as LoadingPage } from "./loading/Page";
+export { default as ErrorPage } from "./error/Page";
