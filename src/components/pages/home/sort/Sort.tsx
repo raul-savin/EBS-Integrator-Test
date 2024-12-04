@@ -25,7 +25,7 @@ const Sort: FC<Tprops> = ({ state, setState }) => {
   return (
     <section className="section justify-end w-full lg:items-end items-center !mt-0 lg:w-fit">
       <aside className="flex items-center">
-        <h3 className="mr-2">Sort by</h3>
+        <h2 className="mr-2 text-sm">Sort by</h2>
         <Select
           onChange={(e) => toSort({ value: e?.value as Tsort["value"] })}
           options={options}
