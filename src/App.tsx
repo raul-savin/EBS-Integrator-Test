@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import { Layout } from "./components/layout";
 import { Four0Four, Home } from "./pages";
-import { LoadingCart } from "./components/common/pages";
+import { LoadingPage } from "./components/common/pages";
 
 const Cart = lazy(() => import("./pages/cart/Page"));
 
@@ -17,7 +17,7 @@ const App: FC = () => (
       <Route index element={<Home />} />
       <Route
         path="cart"
-        element={<Suspense fallback={<LoadingCart />} children={<Cart />} />}
+        element={<Suspense fallback={<LoadingPage />} children={<Cart />} />}
       />
 
       <Route path="*" element={<Four0Four />} />
