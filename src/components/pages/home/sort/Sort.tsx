@@ -23,14 +23,16 @@ const Sort: FC<Tprops> = ({ state, setState }) => {
   };
 
   return (
-    <aside>
-      <h3>Sort by</h3>
-      <Select
-        onChange={(e) => toSort({ value: e?.value as Tsort["value"] })}
-        options={options}
-        className="basic-single"
-      />
-    </aside>
+    <section className="section justify-end w-full lg:items-end items-center !mt-0 lg:w-fit">
+      <aside className="flex items-center">
+        <h3 className="mr-2">Sort by</h3>
+        <Select
+          onChange={(e) => toSort({ value: e?.value as Tsort["value"] })}
+          options={options}
+          className="basic-single w-[150px]"
+        />
+      </aside>
+    </section>
   );
 };
 

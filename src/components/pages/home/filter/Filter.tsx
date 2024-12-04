@@ -17,9 +17,11 @@ const Filter: FC<Tfilter> = ({ data, state, setState }) => {
   };
 
   return (
-    <aside className="w-[200px] element-padding-lr">
-      <h2 className="uppercase pb-2">Category</h2>
-      <ul className="inner-section flex-col">
+    <aside className="element-padding-tb w-full lg:pb-0 lg:w-fit !mt-0">
+      <h2 className="uppercase pb-2 text-center w-full lg:text-start">
+        Category
+      </h2>
+      <ul className="inner-section lg:w-fit">
         {categories.map((el, index) => (
           <Category key={index} category={el} onClick={toFilter} />
         ))}
