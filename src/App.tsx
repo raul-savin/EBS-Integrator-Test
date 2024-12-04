@@ -2,14 +2,13 @@ import { FC, lazy, Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { Layout } from "./components/layout";
-import { Four0Four, Home } from "./pages";
+import { Four0Four, Home, Product } from "./pages";
 import { LoadingPage } from "./components/common/pages";
 
 const Cart = lazy(() => import("./pages/cart/Page"));
 
 import "./style/tailwind.css";
 import "./style/loaders.css";
-import "./style/index.css";
 
 const App: FC = () => (
   <Routes>
@@ -18,6 +17,10 @@ const App: FC = () => (
       <Route
         path="cart"
         element={<Suspense fallback={<LoadingPage />} children={<Cart />} />}
+      />
+      <Route
+        path="product/:id"
+        element={<Suspense fallback={<LoadingPage />} children={<Product />} />}
       />
 
       <Route path="*" element={<Four0Four />} />
