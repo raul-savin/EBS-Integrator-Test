@@ -21,7 +21,7 @@ const Filter: FC<Tfilter> = ({ data, state, setState }) => {
       <h2 className="uppercase pb-2 text-center w-full lg:text-start">
         Category
       </h2>
-      <ul className="inner-section lg:w-fit">
+      <ul className="inner-section lg:w-fit justify-between">
         {categories.sort().map((el, index) => (
           <Category key={index} category={el} onClick={toFilter} />
         ))}
