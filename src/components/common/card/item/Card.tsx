@@ -28,7 +28,7 @@ const Card: FC<Titem> = ({ id, image, title, price, category }) => {
           </span>
         )}
         <figure>
-          <figcaption className="flex relative justify-center element-padding-tb capitalize md:text-xs">
+          <figcaption className="flex text-sm text-blue relative justify-center element-padding-tb capitalize md:text-xs">
             {category}
           </figcaption>
           <img
@@ -41,7 +41,7 @@ const Card: FC<Titem> = ({ id, image, title, price, category }) => {
         <header className="element-padding-tb text-center">
           <h2 className="text-sm">{title}</h2>
         </header>
-        <footer className="flex justify-between w-full h-[40px]">
+        <footer className="flex justify-between w-full">
           <Button
             onClick={() => removeItemFromCart({ id })}
             disabled={!itemQuantity}
@@ -49,7 +49,7 @@ const Card: FC<Titem> = ({ id, image, title, price, category }) => {
           >
             <Remove />
           </Button>
-          <span className="flex items-center font-medium text-sm md:text-base">
+          <span className="flex items-center font-medium text-sx md:text-sm">
             {price}$
           </span>
           <Button
