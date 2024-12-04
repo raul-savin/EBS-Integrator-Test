@@ -15,7 +15,7 @@ const Page: FC = () => {
 
   return (
     <main className="main min-h-[calc(100vh-var(--footer)-var(--navbar)-var(--xxl))]">
-      <header>
+      <header className="mt-[var(--md)]">
         <Title title="Shopping Cart" />
       </header>
       <section className="section section-margin-tb">

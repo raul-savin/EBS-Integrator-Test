@@ -22,7 +22,6 @@ const Page: FC = () => {
 
   const { cart, data, updateData } = useShoppingContext();
 
-  console.log(error);
   // Fetch and Update state and Context state from API
   useEffect(() => {
     const fetchData = async () => {
@@ -81,7 +80,7 @@ const Page: FC = () => {
 
   return (
     <main className="main">
-      <header>
+      <header className="mt-[var(--md)]">
         <Title title="Product Catalog" />
       </header>
       <ShoppingBag cart={cart} />
