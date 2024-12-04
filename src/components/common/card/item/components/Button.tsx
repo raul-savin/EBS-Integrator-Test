@@ -1,4 +1,5 @@
 import { FC, ReactNode } from "react";
+import cn from "classnames";
 
 type TcardButtton = {
   label: string;
@@ -10,7 +11,10 @@ type TcardButtton = {
 const Button: FC<TcardButtton> = ({ label, children, onClick, disabled }) => (
   <button
     type="button"
-    className="border-[1.5px] border-blue flex justify-center items-center size-[40px] [&>svg]:text-blue"
+    className={cn(
+      "border-[1.5px] border-blue flex justify-center hover:bg-blue-light items-center size-[40px] [&>svg]:text-blue",
+      { "hover:bg-white": disabled }
+    )}
     aria-label={label}
     onClick={onClick}
     disabled={disabled}
