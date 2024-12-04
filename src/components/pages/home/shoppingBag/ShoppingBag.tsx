@@ -13,7 +13,7 @@ const ShoppingBag: FC<{ cart: Titem[] }> = ({ cart }) => {
 
   return (
     <aside
-      className="fixed right-[1.25rem] hover:cursor-pointer md:right-6 md:top-10 lg:top-8 lg:right-8 top-16 z-10"
+      className="fixed right-[1.25rem] hover:cursor-pointer md:right-6 md:top-12 lg:right-8 z-10"
       onClick={() => navigate("/cart")}
     >
       <figure className="flex justify-center items-center">
