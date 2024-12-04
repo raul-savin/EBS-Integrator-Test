@@ -14,7 +14,7 @@ const Page: FC = () => {
     sort: null,
     items: [],
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const { data, updateData } = useShoppingContext();
@@ -59,10 +59,12 @@ const Page: FC = () => {
   }, [state.category]);
 
   return (
-    <main className="main flex w-full flex-row">
-      <Filter data={data} state={state} setState={setState} />
-      <section className="section">
+    <main className="main">
+      <section className="section !mt-0">
+        <Filter data={data} state={state} setState={setState} />
         <Sort state={state} setState={setState} />
+      </section>
+      <section className="section flex-row justify-center !mt-[var(--sm)]">
         <ul className="inner-section [@media(width<1280px)]:[&>li:not(:nth-child(n+3))]:mb-[var(--md)] [@media(width<768px)]:[&>li:nth-last-of-type(2)]:mb-[var(--md)]">
           {state.items.length &&
             state.items.map((el) => <ItemCard key={el.id} {...el} />)}
