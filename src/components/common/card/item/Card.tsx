@@ -18,8 +18,8 @@ const Card: FC<Titem> = ({ id, image, title, price, category }) => {
     <li className="four-column element-margin-tb relative">
       <article
         className={cn(
-          "flex flex-col justify-center items-center shadow-md [@media(width<1280px)]:p-[var(--sm)] element-padding-lr  element-padding-tb text-sm md:text-base !pt-0",
-          { "shadow-blue-light/50": itemQuantity && pathname !== "/cart" }
+          "flex flex-col justify-center items-center shadow-lg shadow-black/50 [@media(width<1280px)]:p-[var(--sm)] element-padding-lr  element-padding-tb text-sm md:text-base !pt-0",
+          { "!shadow-red": itemQuantity && pathname !== "/cart" }
         )}
       >
         {pathname === "/cart" && (
