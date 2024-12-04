@@ -14,9 +14,9 @@ const Card: FC<Titem> = ({ id, image, title, price, category }) => {
 
   return (
     <li className="four-column element-padding-tb">
-      <article className="flex flex-col justify-center items-center shadow-md element-padding-lr  element-padding-tb !pt-0">
+      <article className="flex flex-col justify-center items-center shadow-md [@media(width<1280px)]:p-[var(--sm)] element-padding-lr  element-padding-tb text-sm md:text-base !pt-0">
         <figure>
-          <figcaption className="flex justify-center element-padding-tb !pt-0 capitalize text-xs">
+          <figcaption className="flex justify-center element-padding-tb !pt-0 capitalize md:text-xs">
             {category}
           </figcaption>
           <img
@@ -37,7 +37,9 @@ const Card: FC<Titem> = ({ id, image, title, price, category }) => {
           >
             <Remove />
           </Button>
-          <span className="flex items-center font-medium">{price}$</span>
+          <span className="flex items-center font-medium text-sm md:text-base">
+            {price}$
+          </span>
           <Button
             onClick={() => addItemToCart({ id })}
             label="add product to cart"
