@@ -47,24 +47,26 @@ const Page: FC = () => {
     <main className="main min-h-[calc(100vh-var(--footer)-var(--navbar)-var(--xxl))] justify-center items-center">
       <section className="section">
         <ShoppingBag cart={cart} />
-        <aside className="w-1/4">
+        <aside className="lg:w-1/4 w-full">
           <figure>
             <img src={image} alt={title} />
           </figure>
         </aside>
-        <article className="w-2/3">
+        <article className="w-full lg:w-2/3">
           <header>
-            <h1 className="element-margin-tb !mt-0">{title}</h1>
+            <h1 className="element-margin-tb !mt-0 text-center text-xl">
+              {title}
+            </h1>
           </header>
           <p className="lg:text-sm text-justify tracking-wide">{description}</p>
-          <aside className="element-padding-tb">
+          <aside className="element-padding-tb my-4 flex justify-between lg:flex-col">
             <p className="flex text-sm items-center lg:text-xs mb-1">
               <Star />
               {rating.rate} out of 5
             </p>
             <p className="text-sm lg:text-xs">{rating.count} global ratings</p>
           </aside>
-          <footer className="flex items-center">
+          <footer className="flex items-center justify-center lg:justify-start">
             <p>Price: {price}$</p>
             <button
               onClick={() => addItemToCart({ id: state.id })}
