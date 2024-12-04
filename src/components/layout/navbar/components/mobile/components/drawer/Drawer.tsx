@@ -9,7 +9,7 @@ const Drawer: FC<TnavMobile> = ({ onToggle, isOpen }) => (
     role="presentation"
     onClick={onToggle}
     className={cn(
-      "fixed -left-0 top-0 z-10 h-screen bg-blue/80 opacity-100 transition-all duration-[1ms] md:hidden",
+      "fixed -left-0 top-0 z-20 h-screen bg-blue/80 opacity-100 transition-all duration-[1ms] md:hidden",
       {
         "w-full": isOpen,
         "w-0": !isOpen,

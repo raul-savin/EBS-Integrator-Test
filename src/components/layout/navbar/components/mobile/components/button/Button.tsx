@@ -9,7 +9,7 @@ const Button: FC<TnavMobile> = ({ onToggle, isOpen }) => (
     type="button"
     aria-label="menu buton"
     onClick={onToggle}
-    className="relative z-20 flex size-[40px] items-center overflow-hidden border-2 border-solid border-black p-[4px] md:hidden"
+    className="relative z-50 flex size-[40px] items-center overflow-hidden border-2 border-solid border-black p-[4px] md:hidden"
   >
     <Span
       elClass={cn(
