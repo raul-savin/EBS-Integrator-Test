@@ -30,6 +30,7 @@ const Sort: FC<Tprops> = ({ state, setState }) => {
           onChange={(e) => toSort({ value: e?.value as Tsort["value"] })}
           options={options}
           className="basic-single w-[150px]"
+          isSearchable={false}
         />
       </aside>
     </section>
