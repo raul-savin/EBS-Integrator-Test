@@ -12,7 +12,7 @@ const Category: FC<Tcategory> = ({ category, onClick }) => {
   };
 
   return (
-    <li className="w-1/2 md:w-1/4 lg:w-fit lg:mr-6">
+    <li className="w-1/2 md:w-fit lg:mr-6">
       <label className="flex items-center md:justify-center lg:justify-start capitalize">
         <input
           className="mr-1 size-[16px]"
