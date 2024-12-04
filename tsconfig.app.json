@@ -16,7 +16,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": { "@/*": ["src/*"] },
-    "types": [ "node" ],
+    "types": [ "node", "jest", "@testing-library/jest-dom" ],
 
     /* Linting */
     "strict": true,
