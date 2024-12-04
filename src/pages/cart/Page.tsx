@@ -6,24 +6,28 @@ import { useShoppingContext } from "@/context";
 import { isEmpty } from "@/utils";
 
 const Page: FC = () => {
-  const { cart } = useShoppingContext();
+  const { cart, clearCart } = useShoppingContext();
+
+  const totalCost = cart.reduce((accumulator, current) => {
+    return accumulator + current.price * current.quantity;
+  }, 0);
 
   return (
     <main className="main min-h-[calc(100vh-var(--footer)-var(--navbar)-var(--xxl))]">
       <section className="section section-margin-tb">
         <header className="mx-auto">
-          <h2>Total cost: 0$</h2>
+          <h2>Total cost: {Number(totalCost).toFixed(2)}$</h2>
         </header>
       </section>
       <section className="section m-auto items-center justify-center">
         <aside className="w-full">
-          <ul className="inner-section">
+          <ul className="inner-section justify-around">
             {!isEmpty(cart) &&
               cart.map((item) => <ItemCard key={item.id} {...item} />)}
           </ul>
           {isEmpty(cart) && <NoItems />}
         </aside>
-        {!isEmpty(cart) && <Footer />}
+        {!isEmpty(cart) && <Footer clearCart={clearCart} />}
       </section>
     </main>
   );
