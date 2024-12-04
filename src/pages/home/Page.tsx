@@ -1,8 +1,9 @@
 import { FC, useEffect, useState } from "react";
 import axios from "axios";
 
-import { Filter, Sort } from "@/components/pages/home";
+import { Filter, ShoppingBag, Sort } from "@/components/pages/home";
 import { ItemCard } from "@/components/common/card";
+import { Title } from "@/components/common/typography";
 import { useShoppingContext } from "@/context";
 import { sortToHigh, sortToLow } from "@/lib";
 import { isEmpty } from "@/utils";
@@ -18,7 +19,7 @@ const Page: FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const { data, updateData } = useShoppingContext();
+  const { cart, data, updateData } = useShoppingContext();
 
   // Fetch and Update state and Context state from API
   useEffect(() => {
@@ -75,6 +76,10 @@ const Page: FC = () => {
 
   return (
     <main className="main">
+      <header>
+        <Title title="Product Catalog" />
+      </header>
+      <ShoppingBag cart={cart} />
       <section className="section !mt-0">
         <Filter data={data} state={state} setState={setState} />
         <Sort state={state} setState={setState} />

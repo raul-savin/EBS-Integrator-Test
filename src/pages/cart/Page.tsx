@@ -2,6 +2,7 @@ import { FC } from "react";
 
 import { Footer, NoItems } from "@/components/pages/cart";
 import { ItemCard } from "@/components/common/card";
+import { Title } from "@/components/common/typography";
 import { useShoppingContext } from "@/context";
 import { isEmpty } from "@/utils";
 
@@ -14,6 +15,9 @@ const Page: FC = () => {
 
   return (
     <main className="main min-h-[calc(100vh-var(--footer)-var(--navbar)-var(--xxl))]">
+      <header>
+        <Title title="Shopping Cart" />
+      </header>
       <section className="section section-margin-tb">
         <header className="mx-auto">
           <h2>Total cost: {Number(totalCost).toFixed(2)}$</h2>
