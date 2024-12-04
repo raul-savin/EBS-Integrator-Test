@@ -6,7 +6,7 @@ import Desktop from "./components/desktop/Desktop";
 
 const Navbar: FC = () => (
   <nav
-    className="flex h-[var(--navbar)] w-full max-w-[inherit] items-center justify-between px-6 capitalize"
+    className="flex h-[var(--navbar)] w-full max-w-[inherit] items-center justify-between px-6 capitalize bg-black/5"
     role="navigation"
   >
     <Logo />
