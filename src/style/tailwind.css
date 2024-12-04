@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    @apply text-[calc(16px+0.390625vw)];
+  }
+
+  body {
+    @apply flex min-h-screen flex-col justify-between bg-white m-auto overflow-x-hidden antialiased xl:max-w-screen-xxl font-lora;
+  }
+
+  main {
+    @apply m-auto h-full w-full;
+  }
+
+  a,
+  li,
+  span,
+  button,
+  blockquote {
+    @apply text-base text-black lg:text-sm;
+  }
+}
+
+@layer components {
+  .main {
+    @apply flex flex-col items-center;
+  }
+  .section {
+    @apply mt-[var(--lg)] flex w-[calc(100%-calc(var(--md)*2))] flex-wrap justify-between transition-width lg:w-[calc(100%-calc(var(--lg)*2))] xl:w-[calc(100%-calc(var(--xl)*2))] xxl:w-full [@media(width<768px)]:max-w-[400px];
+  }
+  .inner-section {
+    @apply flex w-full flex-wrap justify-between transition-width;
+  }
+
+  .four-column {
+    @apply w-[calc(50%-calc(var(--md)/2))] lg:w-[calc(50%-calc(var(--lg)/2))] xl:w-[calc(25%-calc(var(--xl)/1.33))] xxl:w-[calc(25%-calc(var(--xxl)/1.33))];
+  }
+}
+
+@layer utilities {
+  .section-padding-tb {
+    @apply py-[var(--sm)] md:py-[var(--md)] lg:py-[var(--lg)] xl:py-[var(--xl)] xxl:py-[var(--xxl)];
+  }
+  .section-padding-lr {
+    @apply px-[var(--sm)] md:px-[var(--md)] lg:px-[var(--lg)] xl:px-[var(--xl)] xxl:px-[var(--xxl)];
+  }
+  .section-margin-tb {
+    @apply my-[var(--sm)] md:my-[var(--md)] lg:my-[var(--lg)] xl:my-[var(--xl)] xxl:my-[var(--xxl)];
+  }
+  .section-margin-lr {
+    @apply mx-[var(--sm)] md:mx-[var(--md)] lg:mx-[var(--lg)] xl:mx-[var(--xl)] xxl:mx-[var(--xxl)];
+  }
+
+  .element-padding-tb {
+    @apply py-[calc(var(--sm)/2)] md:py-[calc(var(--md)/2)] lg:py-[calc(var(--lg)/2)] xl:py-[calc(var(--xl)/2)] xxl:py-[calc(var(--xxl)/2)];
+  }
+  .element-padding-lr {
+    @apply px-[calc(var(--sm)/2)] md:px-[calc(var(--md)/2)] lg:px-[calc(var(--lg)/2)] xl:px-[calc(var(--xl)/2)] xxl:px-[calc(var(--xxl)/2)];
+  }
+  .element-margin-tb {
+    @apply my-[calc(var(--sm)/2)] md:my-[calc(var(--md)/2)] lg:my-[calc(var(--lg)/2)] xl:my-[calc(var(--xl)/2)] xxl:my-[calc(var(--xxl)/2)];
+  }
+  .element-margin-lr {
+    @apply mx-[calc(var(--sm)/2)] md:mx-[calc(var(--md)/2)] lg:mx-[calc(var(--lg)/2)] xl:mx-[calc(var(--xl)/2)] xxl:mx-[calc(var(--xxl)/2)];
+  }
+}
+
+:root {
+  --navbar: 56px;
+  --footer: 30px;
+  --sm: 1rem;
+  --md: 1.5rem;
+  --lg: 2rem;
+  --xl: 2.5rem;
+  --xxl: 3rem;
+  --maxHelement: 600px;
+  --minHelement: 400px;
+  --element-height: 52px;
+}

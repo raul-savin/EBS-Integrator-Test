@@ -12,6 +12,9 @@ const config: Config = {
         width: "width",
         spacing: "margin, padding",
       },
+      fontFamily: {
+        lora: ["Lora"],
+      },
     },
     colors: {
       black: "#242424",
@@ -21,6 +24,7 @@ const config: Config = {
         DEFAULT: "#0e6269",
         dark: "",
       },
+      red: "#FF331F",
     },
     screens: {
       xs: "0",
