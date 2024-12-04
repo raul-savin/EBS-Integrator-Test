@@ -1,0 +1,36 @@
+// @ts-ignore
+import React from "react";
+import { render, screen } from "@testing-library/react";
+
+import Li from "../Li";
+
+const props = { link: "/link", text: "text" };
+
+describe("path: components/layout/navbar/components/common/li - Li", () => {
+  describe("snapshot", () => {
+    it("match", () => {
+      const { asFragment } = render(<Li {...props} />);
+
+      expect(asFragment()).toMatchSnapshot();
+    });
+  });
+
+  describe("props", () => {
+    describe("link", () => {
+      it("has the correct href", () => {
+        render(<Li {...props} />);
+
+        expect(screen.getByRole("link")).toHaveAttribute("href", "/link");
+      });
+    });
+
+    describe("text", () => {
+      it("has the correct text", () => {
+        render(<Li {...props} />);
+
+        expect(screen.getByRole("link")).toHaveTextContent("text");
+        expect(screen.getByText("text")).toBeInTheDocument();
+      });
+    });
+  });
+});
