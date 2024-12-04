@@ -20,7 +20,9 @@ const Page: FC = () => {
       </header>
       <section className="section section-margin-tb">
         <header className="mx-auto">
-          <h2>Total cost: {Number(totalCost).toFixed(2)}$</h2>
+          <h2 className="border-[1.5px] border-black/10 px-2 py-2">
+            Total cost: <strong>{Number(totalCost).toFixed(2)}$</strong>
+          </h2>
         </header>
       </section>
       <section className="section m-auto items-center justify-center">
